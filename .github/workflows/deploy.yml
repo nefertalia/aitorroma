@@ -30,15 +30,23 @@ jobs:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_ROOT_PAGE_ID: ${{ secrets.NOTION_ROOT_PAGE_ID }}
         run: |
+          apt-get update
+          apt-get install -y libgconf-2-4 wget xvfb unzip
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+          echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+          apt-get update -y
+          apt-get install -y google-chrome-stable 
+          mkdir /chromedriver
+          wget -q --continue -P /chromedriver "https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_linux64.zip"
+          unzip /chromedriver/* -d /chromedriver
           pipenv install
-          pipenv run python ./bin/get-blog-posts.py
-          yarn install
-          yarn build
+          pipenv run python loconotion https://www.notion.so/Aitor-Roma-bbdced757acd4099978ce595ba583c80
+          
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: public # The folder the action should deploy.
+          FOLDER: dist/aitorroma # The folder the action should deploy.
           CLEAN: true
