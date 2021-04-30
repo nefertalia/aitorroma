@@ -10,12 +10,12 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Python 3.8
+      - name: Instalar Python 3.8
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
 
-      - name: Set up pipenv
+      - name: Configurar pipenv
         uses: dschep/install-pipenv-action@v1
         with:
           version: 2020.8.13
@@ -25,7 +25,7 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+      - name: Instalando 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
           NOTION_ROOT_PAGE_ID: ${{ secrets.NOTION_ROOT_PAGE_ID }}
@@ -41,13 +41,12 @@ jobs:
           sudo unzip /chromedriver/* -d /chromedriver
           export PATH=$PATH:/chromedriver
           pipenv install
-          pipenv run python loconotion https://www.notion.so/Aitor-Roma-bbdced757acd4099978ce595ba583c80
-          
+          pipenv run python loconotion project/aitorroma.com.toml
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: dist/aitor-roma # The folder the action should deploy.
+          FOLDER: dist/aitorroma # The folder the action should deploy.
           CLEAN: true
