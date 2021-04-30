@@ -42,6 +42,7 @@ jobs:
           export PATH=$PATH:/chromedriver
           pipenv install
           pipenv run python loconotion project/aitorroma.com.toml
+          cp -Rf project/assets dist/aitorroma
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
