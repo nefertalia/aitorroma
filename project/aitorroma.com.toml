@@ -9,8 +9,6 @@ name = "aitor-roma"
 # of the generated site, and loconotation will parse all sub-pages present on the page
 page = "https://www.notion.so/Hola-Soy-Aitor-bbdced757acd4099978ce595ba583c80"
 
-# optionally apply notion's dark mode, remove the line below to use the default light mode
-
 ## Global Site Settings ##
 # this [site] table defines override settings for the whole site
 # later on we will see how to define settings for a single page
@@ -21,10 +19,10 @@ page = "https://www.notion.so/Hola-Soy-Aitor-bbdced757acd4099978ce595ba583c80"
   # the following adds the tag <meta name="title" content="Loconotion Test Site"/>
   [[site.meta]]
   name = "title"
-  content = "Aitor Roma"
+  content = "Aitor Roma, Página Oficial"
   [[site.meta]]
   name = "description"
-  content = "Blog Aitor Roma"
+  content = "Página personal de Aitor Roma, Apasionado del Software Libre, Cloud Computing y Growth Hacking"
 
   ## Custom Fonts ##
   # you can specify the name of a google font to use on the site - use the font embed name
