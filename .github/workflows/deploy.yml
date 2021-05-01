@@ -56,8 +56,6 @@ jobs:
         env:
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
         run: |
-        [[ -n "$CLOUDFLARE_TOKEN" ]] || \
-          ( echo "Error: Must set CLOUDFLARE_TOKEN secret"; exit 1 )
         curl -sS -X POST \
           "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE }}/purge_cache" \
           -H "Authorization: Bearer $CLOUDFLARE_TOKEN" \
