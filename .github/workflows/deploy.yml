@@ -42,7 +42,7 @@ jobs:
           export PATH=$PATH:/chromedriver
           sudo service tor start
           pipenv install
-          torsocks pipenv run python loconotion --clean project/aitorroma.com.toml
+          torsocks pipenv run python loconotion project/aitorroma.com.toml
           #pipenv run python loconotion https://www.notion.so/Aitor-Roma-bbdced757acd4099978ce595ba583c80 
           cp -Rf project/assets dist/aitor-roma
 
