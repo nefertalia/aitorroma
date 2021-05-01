@@ -55,9 +55,4 @@ jobs:
       - name: Limpiar Cache de CloudFlare ☁️
         env:
           CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
-        run: |
-        curl -sS -X POST \
-          "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE }}/purge_cache" \
-          -H "Authorization: Bearer $CLOUDFLARE_TOKEN" \
-          -H "Content-Type: application/json" \
-          --data '{"purge_everything": true}'
+        run: curl -sS -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE }}/purge_cache" -H "Authorization: Bearer $CLOUDFLARE_TOKEN" -H "Content-Type: application/json"  --data '{"purge_everything": true}'
