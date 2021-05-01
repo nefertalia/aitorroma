@@ -10,7 +10,6 @@ name = "aitor-roma"
 page = "https://www.notion.so/Hola-Soy-Aitor-bbdced757acd4099978ce595ba583c80"
 
 # optionally apply notion's dark mode, remove the line below to use the default light mode
-theme = "dark"
 
 ## Global Site Settings ##
 # this [site] table defines override settings for the whole site
