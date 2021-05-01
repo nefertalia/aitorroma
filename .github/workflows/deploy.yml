@@ -41,8 +41,8 @@ jobs:
           sudo unzip /chromedriver/* -d /chromedriver
           export PATH=$PATH:/chromedriver
           pipenv install
-          #pipenv run python loconotion project/aitorroma.com.toml
-          pipenv run python loconotion https://www.notion.so/Aitor-Roma-bbdced757acd4099978ce595ba583c80 
+          pipenv run python loconotion project/aitorroma.com.toml
+          #pipenv run python loconotion https://www.notion.so/Aitor-Roma-bbdced757acd4099978ce595ba583c80 
           cp -Rf project/assets dist/aitor-roma
 
       - name: Deploy 🚀
