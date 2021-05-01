@@ -37,7 +37,6 @@ jobs:
           sudo wget -q --continue -P /chromedriver "https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_linux64.zip"
           sudo unzip /chromedriver/* -d /chromedriver
           export PATH=$PATH:/chromedriver
-          sudo service tor start
           pipenv install
           pipenv run python loconotion project/aitorroma.com.toml
           cp -Rf project/assets dist/aitor-roma
