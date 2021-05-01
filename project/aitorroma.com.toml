@@ -9,6 +9,9 @@ name = "aitor-roma"
 # of the generated site, and loconotation will parse all sub-pages present on the page
 page = "https://www.notion.so/Hola-Soy-Aitor-bbdced757acd4099978ce595ba583c80"
 
+# optionally apply notion's dark mode, remove the line below to use the default light mode
+theme = "dark"
+
 ## Global Site Settings ##
 # this [site] table defines override settings for the whole site
 # later on we will see how to define settings for a single page
@@ -67,40 +70,3 @@ page = "https://www.notion.so/Hola-Soy-Aitor-bbdced757acd4099978ce595ba583c80"
   [[site.inject.body.script]]
   type="text/javascript"
   src="/project/custom-script.js"
-
-## Individual Page Settings ##
-# the [pages] table defines override settings for individual pages, by defining 
-# a sub-table named after the page url (or part of the url, but careful about
-# not using a string that appears in multiple page urls)
-[pages]
-  # the following settings will only apply to this page: 
-  #   https://www.notion.so/d2fa06f244e64f66880bb0491f58223d
-  [pages.d2fa06f244e64f66880bb0491f58223d]
-    ## custom slugs ##
-    # inside page settings, you can change the url for that page with the 'slug' key
-    # e.g. page "/d2fa06f244e64f66880bb0491f58223d" will now map to "/games-list"
-    slug = "games-list"
-
-    # change the description meta tag for this page only
-    [[pages.d2fa06f244e64f66880bb0491f58223d.meta]] 
-    name = "description"
-    content = "A fullscreen list database page, now with a pretty slug"
-
-    # change the body font for the list page only
-    [pages.d2fa06f244e64f66880bb0491f58223d.fonts]
-    body = 'DM Mono' 
-
-  # set up pretty slugs and options for the other database pages
-  [pages.54dab6011e604430a21dc477cb8e4e3a]
-    slug = "film-gallery"
-
-  [pages.2604ce45890645c79f67d92833083fee]
-    slug = "books-table"
-
-    # don't follow any link on the page, skipping parsing sub-pages linked from this one
-    # useful for large tables where we don't want individual pages for each item
-    no-links = true
-
-  [pages.a28dba2e7a67448da52f2cd2c641407b]
-    slug = "random-board"
-    no-links = true
