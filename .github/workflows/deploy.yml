@@ -31,7 +31,7 @@ jobs:
           NOTION_ROOT_PAGE_ID: ${{ secrets.NOTION_ROOT_PAGE_ID }}
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgconf-2-4 wget xvfb unzip
+          sudo apt-get install -y libgconf-2-4 wget xvfb unzip curl
           sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub |sudo  apt-key add -
           sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" |sudo tee -a /etc/apt/sources.list.d/google.list
           sudo apt-get update -y
@@ -51,3 +51,15 @@ jobs:
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: dist/aitorroma # The folder the action should deploy.
           CLEAN: true
+      
+      - name: Limpiar Cache de CloudFlare ☁️
+        env:
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
+        run: |
+        [[ -n "$CLOUDFLARE_TOKEN" ]] || \
+          ( echo "Error: Must set CLOUDFLARE_TOKEN secret"; exit 1 )
+        curl -sS -X POST \
+          "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE }}/purge_cache" \
+          -H "Authorization: Bearer $CLOUDFLARE_TOKEN" \
+          -H "Content-Type: application/json" \
+          --data '{"purge_everything": true}'
