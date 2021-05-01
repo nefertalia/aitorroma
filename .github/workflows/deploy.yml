@@ -41,15 +41,16 @@ jobs:
           sudo unzip /chromedriver/* -d /chromedriver
           export PATH=$PATH:/chromedriver
           pipenv install
-          pipenv run python loconotion project/aitorroma.com.toml
-          cp -Rf project/assets dist/aitorroma
+          #pipenv run python loconotion project/aitorroma.com.toml
+          pipenv run python loconotion https://www.notion.so/Aitor-Roma-bbdced757acd4099978ce595ba583c80 
+	  cp -Rf project/assets dist/aitor-roma
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: dist/aitorroma # The folder the action should deploy.
+          FOLDER: dist/aitor-roma # The folder the action should deploy.
           CLEAN: true
 
       - name: Purgar cache de Cloudflare ⛅
