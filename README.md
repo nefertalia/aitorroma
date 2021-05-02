@@ -30,10 +30,18 @@ Podía crear la página estática y subirla directamente, pero me encanta compli
 
 ### ¿Como?
 
-Si quieres desplegar tú propia web básada en notion tansolo tienes que clonar este repositorio.
+Si quieres desplegar tú propia web básada en notion tan solo tienes que clonar este repositorio.
 
 ```
 $ git clone https://github.com/aitorroma/aitorroma
+$ cd aitorroma
+$ rm .git
+$ git init
+$ git add .
+$ git commit -m 'First commit'
+$ git remote add origin <remote repository URL>
+$ git remote -v
+$ git push origin master
 ```
 
 Puedes editar el fichero _**project/[aitorroma.com.toml](https://github.com/aitorroma/aitorroma/blob/main/project/aitorroma.com.toml)**_
