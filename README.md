@@ -35,7 +35,7 @@ Si quieres desplegar tú propia web básada en notion tan solo tienes que clonar
 ```
 $ git clone https://github.com/aitorroma/aitorroma
 $ cd aitorroma
-$ rm .git
+$ rm -Rf .git
 $ git init
 $ git add .
 $ git commit -m 'First commit'
