@@ -1,3 +1,13 @@
+​                                                                                              
+
+
+
+
+
+​                                                                                                        <img src="https://tva1.sinaimg.cn/large/008i3skNgy1gq8sg0undhj30hs0hs7aj.jpg" style="zoom:20%;" />          
+
+
+
 ### ¿Que es este repositorio?
 
 Este proyecto es la implementación de una web creada en notion.so convertida a una web estatica mediante GitHub Actions y un script en python llamado **[loconotion](https://github.com/leoncvlt/loconotion )** 
@@ -232,3 +242,8 @@ Debeis cambiar vuestro dominio y darle a **Guardar e implementar**
 
 
 Si haceis algún cambio en vuestra página de notion.so debéis ir a Github en Actions y hacer un deploy manual, de lo contrario se realizara diariamente a las 0:00 UTC.
+
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J64AN17)
+
