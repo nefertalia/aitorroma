@@ -644,7 +644,7 @@ html.notion-front-page .notion-app-inner {
 /* ==================================================================== */
 /* Editor force select hack (see Editable.tsx).
 /* ==================================================================== */
-.edtior-force-select {
+.editor-force-select {
     user-select: auto !important;
     -webkit-user-select: auto !important;
     -moz-user-select: auto !important
