@@ -564,9 +564,7 @@ html.notion-front-page .notion-app-inner {
 /* Contenteditable placeholders.
 /* ==================================================================== */
 [contenteditable]:empty:before {
-    content: attr(placeholder);
-    display: block;
-    /* For Firefox */
+    content: attr(placeholder)
     }
 /* ==================================================================== */
 /* Intercom.
