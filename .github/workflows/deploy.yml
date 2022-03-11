@@ -34,8 +34,7 @@ jobs:
           sudo wget -q --continue -P /chromedriver "https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_linux64.zip"
           sudo unzip /chromedriver/* -d /chromedriver
           export PATH=$PATH:/chromedriver
-          pipenv install
-          pip install -r requirements.txt
+          pipenv install -r requirements.txt
           pipenv run python loconotion  project/aitorroma.com.toml
           cp -Rf project/assets dist/aitor-roma
 
