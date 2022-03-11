@@ -29,15 +29,13 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgconf-2-4 wget xvfb unzip curl
-          sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub |sudo  apt-key add -
-          sudo echo "deb http://dl.google.com/linux/chrome/deb/ stable main" |sudo tee -a /etc/apt/sources.list.d/google.list
-          sudo apt-get update -y
-          sudo apt-get install -y google-chrome-stable 
+          sudo wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}_amd64.deb && apt install -y /tmp/chrome.deb && rm /tmp/chrome.deb
           sudo mkdir /chromedriver
           sudo wget -q --continue -P /chromedriver "https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_linux64.zip"
           sudo unzip /chromedriver/* -d /chromedriver
           export PATH=$PATH:/chromedriver
           pipenv install
+          pip install -r requirements.txt
           pipenv run python loconotion  project/aitorroma.com.toml
           cp -Rf project/assets dist/aitor-roma
 
