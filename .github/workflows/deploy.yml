@@ -25,7 +25,8 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Instalando 🔧 
+      - name: Instalando 🔧
+        uses: GabrielBB/xvfb-action@v1 
         run: |
           sudo apt-get update
           sudo apt-get install -y libgconf-2-4 wget xvfb unzip curl
