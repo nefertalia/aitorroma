@@ -35,7 +35,7 @@ jobs:
           sudo unzip /chromedriver/* -d /chromedriver
           export PATH=$PATH:/chromedriver
           python --version
-          python install -r requirements.txt
+          pip install -r requirements.txt
           python loconotion --chromedriver /chromedriver/chromedriver project/aitorroma.com.toml
           cp -Rf project/assets dist/aitor-roma
 
