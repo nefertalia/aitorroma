@@ -36,7 +36,7 @@ jobs:
           export PATH=$PATH:/chromedriver
           python --version
           pip install -r requirements.txt
-          python loconotion  project/aitorroma.com.toml
+          python loconotion --non-headless  project/aitorroma.com.toml
           cp -Rf project/assets dist/aitor-roma
 
       - name: Deploy 🚀
