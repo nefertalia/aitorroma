@@ -1,0 +1,53 @@
+name: Build and Deploy
+on:
+  schedule:
+    - cron: "0 0 * * *" # Every day at midnight.
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instalar Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Configurar pipenv
+        uses: dschep/install-pipenv-action@v1
+        with:
+          version: 2020.8.13
+
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2.3.2 
+        with:
+          persist-credentials: false
+
+      - name: Instalando 🔧 
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgconf-2-4 wget xvfb unzip curl
+          sudo wget --no-verbose -O /tmp/chrome.deb https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_87.0.4280.141-1_amd64.deb && sudo apt install -y /tmp/chrome.deb && sudo rm /tmp/chrome.deb
+          sudo mkdir /chromedriver
+          sudo wget -q --continue -P /chromedriver "https://chromedriver.storage.googleapis.com/87.0.4280.88/chromedriver_linux64.zip"
+          sudo unzip /chromedriver/* -d /chromedriver
+          export PATH=$PATH:/chromedriver
+          pipenv install -r requirements.txt
+          pipenv run python loconotion --chromedriver /chromedriver/chromedriver project/aitorroma.com.toml
+          cp -Rf project/assets dist/aitor-roma
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: dist/aitor-roma # The folder the action should deploy.
+          CLEAN: true
+
+      - name: Purgar cache de Cloudflare ⛅
+        uses: jakejarvis/cloudflare-purge-action@master
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_TOKEN }}
