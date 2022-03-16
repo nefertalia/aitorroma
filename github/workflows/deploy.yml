@@ -36,16 +36,16 @@ jobs:
             export PATH=$PATH:/chromedriver
             python --version
             pip install -r requirements.txt
-           # python loconotion --chromedriver /chromedriver/chromedriver  project/aitorroma.com.toml
-           # cp -Rf project/assets dist/aitor-roma
+            python loconotion --chromedriver /chromedriver/chromedriver  project/aitorroma.com.toml
+            cp -Rf project/assets dist/aitor-roma
 
       - name: Deploy 🚀
-       # uses: JamesIves/github-pages-deploy-action@3.7.1
-       # with:
-       #   GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
-       #   BRANCH: gh-pages # The branch the action should deploy to.
-       #   FOLDER: dist/aitor-roma # The folder the action should deploy.
-       #   CLEAN: true
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GH_SECRET }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: dist/aitor-roma # The folder the action should deploy.
+          CLEAN: true
 
       - name: Purgar cache de Cloudflare ⛅
         uses: jakejarvis/cloudflare-purge-action@master
